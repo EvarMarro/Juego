@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IArmadura.cs" />
     <Compile Include="Interfaces\IEquipable.cs" />
     <Compile Include="Interfaces\IPersonaje.cs" />
     <Compile Include="Personaje.cs" />

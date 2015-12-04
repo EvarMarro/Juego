@@ -5,5 +5,6 @@
         void Equipar(IPersonaje personaje);
         int PuntosDeAtaque();
         int PuntosDeArmadura();
+        int Tipo();
     }
 }
