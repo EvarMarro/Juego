@@ -12,6 +12,17 @@ namespace Items
         public int Armadura;
         public List<IEquipable> equipamiento;
 
+        public Personaje(int puntosDeVida, int armadura)
+        {
+            PuntosDeVidaActual = puntosDeVida;
+            PuntosDeAtaque = puntosDeVida;
+            Armadura = armadura;
+            equipamiento = new List<IEquipable>();
+        }
+        public override string ToString()
+        {
+            return string.Format("Se crea un personaje con {0} puntos de vida y {1} de armadura", PuntosDeVidaActual, Armadura );
+        }
         public void Atacar(IPersonaje rival)
         {
             rival.RecibirAtaque(CalcularPuntosDeAtaque());
@@ -24,11 +35,9 @@ namespace Items
 
         public int CalcularPuntosDeAtaque()
         {
-            int puntosAdquiridos = 0;
-            foreach(var x in equipamiento)
-            {
-                puntosAdquiridos += x.PuntosDeAtaque();
-            }
+            int puntosAdquiridos = equipamiento
+                                    .Select(x => x.PuntosDeAtaque())
+                                    .Sum();
             return PuntosDeAtaque + puntosAdquiridos;
         }
 
